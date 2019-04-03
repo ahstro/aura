@@ -12,7 +12,8 @@ SERVER_VERSION = "0.1.0"
 
 # Routes
 
-api = Blueprint("api", __name__)
+
+api = Blueprint("api", __name__, url_prefix="/aura")
 
 
 @api.route("/server")
@@ -37,7 +38,7 @@ def server():
 # Flask
 
 app = Flask(__name__)
-app.register_blueprint(api, url_prefix="/aura")
+app.register_blueprint(api)
 
 
 # Plugin
