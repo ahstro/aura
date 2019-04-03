@@ -17,6 +17,7 @@ api = Blueprint("api", __name__)
 
 @api.route("/server")
 def server():
+    """Exposes global information and status for the AURA server."""
     return flask.jsonify(
         {
             "aura-version": AURA_SPEC_VERSION,
@@ -37,6 +38,8 @@ app.register_blueprint(api, url_prefix="/aura")
 
 
 class AuraPlugin(BeetsPlugin):
+    """Serve the beets library through an AURA API"""
+
     def __init__(self):
         super(AuraPlugin, self).__init__()
         self.config.add(
@@ -51,6 +54,7 @@ class AuraPlugin(BeetsPlugin):
         )
 
     def commands(self):
+        """Register "aura" subcommand for starting server."""
         cmd = ui.Subcommand("aura", help=u"serve library through aura api")
         cmd.parser.add_option(
             u"-d", u"--debug", action="store_true", default=False, help=u"debug mode"
