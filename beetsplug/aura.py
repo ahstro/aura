@@ -8,6 +8,7 @@ from flask import Flask, Blueprint
 AURA_SPEC_VERSION = "0.2.0"
 SERVER_NAME = "beets-aura-plugin"
 SERVER_VERSION = "0.1.0"
+RESPONSE_MIMETYPE = "application/vnd.api+json"
 
 
 # Routes
@@ -38,6 +39,7 @@ def server():
 # Flask
 
 app = Flask(__name__)
+app.config["JSONIFY_MIMETYPE"] = RESPONSE_MIMETYPE
 app.register_blueprint(api)
 
 
