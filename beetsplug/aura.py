@@ -20,10 +20,16 @@ def server():
     """Exposes global information and status for the AURA server."""
     return flask.jsonify(
         {
-            "aura-version": AURA_SPEC_VERSION,
-            "server": SERVER_NAME,
-            "server-version": SERVER_VERSION,
-            "auth-required": True,
+            "data": {
+                "id": 0,
+                "type": "server",
+                "attributes": {
+                    "aura-version": AURA_SPEC_VERSION,
+                    "server": SERVER_NAME,
+                    "server-version": SERVER_VERSION,
+                    "auth-required": True,
+                },
+            }
         }
     )
 
